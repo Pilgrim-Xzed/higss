@@ -25,7 +25,7 @@ RELATIONSHIP_CHOICES = (
 class Application(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField()
-    passport = models.ImageField(upload_to='passports/')
+    passport = models.ImageField(upload_to='passports/', blank=True, null=True)
     surname_of_pupil = models.CharField(max_length=255)
     firstname_of_pupil = models.CharField(max_length=255)
     othername_of_pupil = models.CharField(max_length=255)

@@ -10,4 +10,4 @@ class ApplicationForm(ModelForm):
             'passport':FileInput(attrs={'class':'file-input'})
         }
 
-        exclude = ('user', 'passed', 'timestamp','passport')
+        exclude = ('user', 'passed', 'timestamp')

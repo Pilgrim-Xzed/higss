@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+	<section class="hero is-primary" style="background:#3F51B5;">
+		<div class="hero-body">
+			<div class="container">
+			 <img src="{% static "images/logo.png" %}" alt="logo.png" style=" display:block; margin: 0 auto; width: 200px;"/>
+      <br>
+				<h1 class="title" style="text-align: center;">
+					Application Fee
+				</h1>
+				<br>
+				<h2 class="subtitle" style="text-align: center;">
+					Confirm Details and pay application fee
+				</h2>
+				<br><br>
+				<a href="{% url 'account:logout' %}" class="button is-primary is-inverted is-outlined" style="display: block; width: 20%; margin: 0 auto; min-width: 200px;">Logout</a>
+			</div>
+		</div>
+	</section>
+
+	<br><br><br>
+
+	<div class="container" style="width: 50%; min-width: 200px; max-width: 500px;">
+
+		<label class="label has-text-grey-lighter">Passport Photograph</label>
+
+		<div class="card-image">
+			<figure class="image is-128x128">
+				<img class="is-rounded" src="{{ registration.passport_photograph.url }}" alt="Placeholder image">
+			</figure>
+		</div>
+
+
+		<br>
+
+
+		<label class="label has-text-grey-lighter">Full name of pupil:</label>
+		<h2 class="title is-3">Faruk Shuaibu Adamu</h2>
+  
+		
+		<label class="label has-text-grey-lighter">Sex:</label>
+		<h2 class="title is-3">Male</h2>
+  
+		   
+		<label class="label has-text-grey-lighter">Date of Birth</label>
+		<h2 class="title is-3">23/10/1996</h2>
+  
+			 
+		<label class="label has-text-grey-lighter">Class you are applying to</label>
+		<h2 class="title is-3">SSS3</h2>
+  
+		<label class="label has-text-grey-lighter">Fullname of parent/guardian</label>
+		<h2 class="title is-3">Shuaibu Adamu</h2>
+  
+		<label class="label has-text-grey-lighter">Relationship with pupil</label>
+		<h2 class="title is-3">Father</h2>
+  
+		<label class="label has-text-grey-lighter">Profession/Occupation</label>
+		<h2 class="title is-3">Diesel Mechanic </h2>
+  
+		<label class="label has-text-grey-lighter">Residential Address</label>
+		<h2 class="title is-3">GP 484 Suleiman Crescent Kano Nigeria.</h2>
+  
+		<label class="label has-text-grey-lighter">Office Address</label>
+		<h2 class="title is-3">No. 2 Batwa Close Hadeja Road Kano.</h2>
+  
+		<label class="label has-text-grey-lighter">Telephone 1</label>
+		<h2 class="title is-3">+2348176836670</h2>
+  
+		<label class="label has-text-grey-lighter">Does the child have any persistent aliments?</label>
+		<h2 class="title is-3">No</h2>
+		<br><br>
+		<div class="field is-grouped" style="margin: 0 auto; width: 100%;">
+			<div class="control"  style="margin: 0 auto; width: 100%;">
+				<a href="{% url 'registration:registration' %}" style="display: inline-block; width: 45%; min-width: 200px; margin-top: 20px;"><button class="button is-warning" style="width: 100%;">Go back</button> </a>
+
+				<a href="{% url 'account:dashboard' %}" style="display: inline-block; width: 45%; min-width: 200px; margin-top: 20px;" ><button class="button is-link" style="width: 100%;" onclick="payWithPaystack();">Pay Fee : &#x20A6; 1000</button></a>
+			</div>
+		</div>
+
+		<br><br><br><br>
+
+
+
+		<br><br><br><br>
+
+	</div>
+
+
+
+
+{% endblock %}

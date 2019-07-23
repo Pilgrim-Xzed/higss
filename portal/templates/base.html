@@ -1,0 +1,67 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+  {% load static%}
+  
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}HIGSS Portal{% endblock %}</title>
+  <link rel="manifest" href="{% static 'site.webmanifest' %}">
+	<link rel="apple-touch-icon" href="icon.png">
+	<link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-calendar@6/dist/css/bulma-calendar.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bulma-calendar@6/dist/js/bulma-calendar.min.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+
+	<style>
+		 #hint_id_username, #hint_id_password1 {
+         display: none;
+     }
+	</style>
+</head>
+<body>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+{#<script src="js/plugins.js"></script>#}
+{#<script src="js/main.js"></script>#}
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script>
+<script>
+// Initialize all input of type date
+var calendars = bulmaCalendar.attach('[type="date"]');
+
+// Loop on each calendar initialized
+for (var i = 0; i < calendars.length; i++) {
+// Add listener to date:selected event
+calendars[i].on('select', date => {
+console.log(date);
+});
+}
+
+// To access to bulmaCalendar instance of an element
+var element = document.querySelector('#id_date_of_birth');
+if (element) {
+// bulmaCalendar instance is available as element.bulmaCalendar
+element.bulmaCalendar.on('select', function (datepicker) {
+console.log(datepicker.data.value());
+});
+}
+</script>
+
+</body>
+</html>

@@ -23,7 +23,7 @@ def apply(request):
             model_instance.timestamp = timezone.now()
             model_instance.user = request.user
             model_instance.save()
-            return redirect('/status/')
+            return redirect('/status/', {'result_data':model_instance })
  
     else:
  
@@ -32,4 +32,4 @@ def apply(request):
 
 def status(request):
     # Return all applications for case of multiple
-    return render(request, 'status.html', {})
+    return render(request, 'status.html', {'result_data':request})

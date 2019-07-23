@@ -42,4 +42,4 @@ class Application(models.Model):
     passed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.full_name_of_pupil
+        return self.surname_of_pupil +' '+ self.firstname_of_pupil

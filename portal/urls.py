@@ -6,6 +6,6 @@ urlpatterns = [
     path('', apply),
     path('pay/<email>/<pk>', pay, name='pay'),
     path('signup/', SignUp.as_view(), name='signup'),
-    path('status/<int:pk>/',status),
+    path('status/<pk>/',status, name='status'),
     path('confirm/<pk>/', confirm, name='confirm')
 ]

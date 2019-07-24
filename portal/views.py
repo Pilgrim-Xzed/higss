@@ -16,6 +16,7 @@ class SignUp(generic.CreateView):
 
 @login_required
 def apply(request):
+    applications = Application.objects.all()
     if request.method == "POST":
         form = ApplicationForm(request.POST)
         if form.is_valid():
@@ -29,7 +30,7 @@ def apply(request):
     else:
  
         form = ApplicationForm()
-    return render(request, 'home.html', {'form': form})
+    return render(request, 'home.html', {'form': form, 'applications': applications})
 
 def status(request, pk):
     application = Application.objects.get(id=pk)

@@ -40,8 +40,9 @@ class Application(models.Model):
     office_address = models.CharField(max_length=50, null=True, blank=True)
     telephone = models.CharField(max_length=50, null=True, blank=True)
     child_aliments = models.TextField(help_text='Does the child have any persistent aliments?', null=True, blank=True)
-    passed = models.BooleanField(default=False)
+    confirm = models.BooleanField(default=False)
     admission_number = models.CharField(null=True, blank=True, max_length=50)
+    school_fees = models.CharField(null=True, blank=True, max_length=50)
 
     def __str__(self):
         return self.surname_of_pupil +' '+ self.firstname_of_pupil

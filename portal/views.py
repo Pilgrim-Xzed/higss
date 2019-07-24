@@ -52,6 +52,12 @@ def pay(request, email, pk):
     redirect_url = '/confirm/{}/'.format(pk)
     return render(request, 'pay.html', {'email': email, 'redirect_url': redirect_url})
 
+
+def pay_fee(request, pk, email, fee):
+    amount = int(fee) * 100 
+    redirect_url = '/confirm/{}/'.format(pk)
+    return render(request, 'pay_fees.html', {'email': email, 'redirect_url': redirect_url, 'amount': amount})
+
 def confirm(request, pk):
     pk = int(pk)
     application = Application.objects.get(id=pk)

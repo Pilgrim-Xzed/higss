@@ -10,16 +10,27 @@
       <div class="container">
           <img src="{% static "images/logo.png" %}" alt="logo.png" style=" display:block; margin: 0 auto; width: 200px;"/>
         <h1 class="title" style="text-align: center;">
-          Application
+          Application Status Checker          
         </h1>
         <br>
         <h2 class="subtitle" style="text-align: center;">
-            Hi {{ application.email }}! Welcome to your application portal.
         </h2>
-        <p style="text-align: center;">Check your email for receipts.</p>
+        <p style="text-align: center;">Check your email for details.</p>
         <br><br>
-        <p class="subtitle" style="text-align: center;"> Confirmation: {{application.passed}}</p> 
+        <p class="subtitle" style="text-align: center;"> Confirmation: {{application.confirm}}</p> 
         <h4 class="subtitle" style="text-align: center;"> Admission Number: {{application.admission_number}}</h4> 
+        <h4 class="subtitle" style="text-align: center;"> School Fees: {{application.school_fees}}</h4> 
+        <br>
+        {% if application.school_fees %}
+        <p class="subtitle" style="text-align: center;"> 
+        <a href="{% url 'pay_fee' email=application.email pk=application.id fee=application.school_fees %}" class="button is-link" class="subtitle" style="text-align: center;" >Pay School Fees</a>
+        </p>
+        {% else %}
+        <p class="subtitle" style="text-align: center;"> 
+        <a href="#" class="button is-link" class="subtitle" style="text-align: center;" >Pay School Fees</a>
+        </p>
+        {% endif %}        
+        <br>
       </div>
     </div>
   </section>

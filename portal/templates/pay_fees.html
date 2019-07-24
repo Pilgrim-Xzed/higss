@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Make Payment</title>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script>
+        function payWithPaystack() {
+            var handler = PaystackPop.setup({
+                key: 'pk_test_3ffa7fee625fe7dd52aa8a24cb4a6f8e7c4fa16f',
+                email: "{{ email }}",
+                amount: "{{ amount }}",
+                currency: "NGN",
+                ref: '' + Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                metadata: {
+                    custom_fields: [
+                        {
+                            display_name: "Mobile Number",
+                            variable_name: "mobile_number",
+                            value: "+2348012345678"
+                        }
+                    ]
+                },
+                callback: function (response) {
+                    window.location.href = "{{redirect_url}}"
+                },
+                onClose: function () {
+                    // alert('window closed');
+                }
+            });
+            handler.openIframe();
+        };
+    </script>
+</head>
+
+
+<body onload="payWithPaystack();">
+
+
+</body>
+
+</html>

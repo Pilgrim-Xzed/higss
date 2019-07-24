@@ -16,7 +16,7 @@ class SignUp(generic.CreateView):
 
 @login_required
 def apply(request):
-    applications = Application.objects.all()
+    applications = Application.objects.filter(user=request.user)
     if request.method == "POST":
         form = ApplicationForm(request.POST)
         if form.is_valid():

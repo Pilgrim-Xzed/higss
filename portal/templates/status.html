@@ -111,7 +111,7 @@
                                         <div class="control"  style="margin: 0 auto; width: 100%;">
                                             <span style="display: inline-block; width: 45%; min-width: 200px; margin-top: 20px;"><button type="submit" class="button is-warning" style="width: 100%;">Update</button> </span>
                             
-                                            <a href="/pay/" style="display: inline-block; width: 45%; min-width: 200px; margin-top: 20px;" class="button is-link" style="width: 100%;" >Pay Fee : &#x20A6; 1000</a>
+                                            <a href="{% url 'pay' email=form.email.value %}" style="display: inline-block; width: 45%; min-width: 200px; margin-top: 20px;" class="button is-link" style="width: 100%;" >Pay Fee : &#x20A6; 1000</a>
                                         </div>
                                     </div>
                                     <br><br>

@@ -12,7 +12,7 @@
             var amount = 1000;
             var handler = PaystackPop.setup({
                 key: 'pk_test_3ffa7fee625fe7dd52aa8a24cb4a6f8e7c4fa16f',
-                email: "anasbalarabe@gmail.com",
+                email: "{{ email }}",
                 amount: amount * 100,
                 currency: "NGN",
                 ref: '' + Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you

@@ -47,5 +47,6 @@ def status(request, pk):
         form = ApplicationForm(instance=application)
     return render(request, 'status.html', {'form': form})
 
-def pay(request):
-    return render(request, 'pay.html', {})
+def pay(request, email):
+    print(email)
+    return render(request, 'pay.html', {'email': email})

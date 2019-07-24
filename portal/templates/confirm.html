@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{%load static%}
+{% load crispy_forms_tags %}
+
+{% block title %}Confirm{% endblock %}
+
+{% block content %}
+<section class="hero is-primary"  style="background:#3F51B5;">
+    <div class="hero-body">
+      <div class="container">
+          <img src="{% static "images/logo.png" %}" alt="logo.png" style=" display:block; margin: 0 auto; width: 200px;"/>
+        <h1 class="title" style="text-align: center;">
+          Application
+        </h1>
+        <br>
+        <h2 class="subtitle" style="text-align: center;">
+            Hi {{ application.email }}! Welcome to your application portal.
+        </h2>
+        <p style="text-align: center;">Check your email for receipts.</p>
+        <br><br>
+        <p class="subtitle" style="text-align: center;"> Confirmation: {{application.passed}}</p> 
+        <h4 class="subtitle" style="text-align: center;"> Admission Number: {{application.admission_number}}</h4> 
+      </div>
+    </div>
+  </section>
+{% endblock %}

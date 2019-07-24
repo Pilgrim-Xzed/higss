@@ -45,8 +45,13 @@ def status(request, pk):
     else:
  
         form = ApplicationForm(instance=application)
-    return render(request, 'status.html', {'form': form})
+    return render(request, 'status.html', {'form': form, 'pk': pk})
 
-def pay(request, email):
-    print(email)
-    return render(request, 'pay.html', {'email': email})
+def pay(request, email, pk):
+    redirect_url = '/confirm/{}/'.format(pk)
+    return render(request, 'pay.html', {'email': email, 'redirect_url': redirect_url})
+
+def confirm(request, pk):
+    pk = int(pk)
+    application = Application.objects.get(id=pk)
+    return render(request, 'confirm.html', {'pk': pk, 'application': application})

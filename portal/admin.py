@@ -1,4 +1,9 @@
 from django.contrib import admin
 from .models import Application
+from .resources import ApplicationResource
+from import_export.admin import ImportExportModelAdmin
 
-admin.site.register(Application)
+class ApplicationAdmin(ImportExportModelAdmin):
+    resource_class = ApplicationResource
+
+admin.site.register(Application, ApplicationAdmin)

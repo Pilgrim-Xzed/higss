@@ -1,4 +1,5 @@
 from django.forms import ModelForm,DateField,DateInput,FileInput
+from django import forms
 from .models import Application
 
 class ApplicationForm(ModelForm):
@@ -11,3 +12,6 @@ class ApplicationForm(ModelForm):
         }
 
         exclude = ('user', 'passed', 'timestamp', 'admission_number')
+
+class CheckForm(forms.Form):
+    admission_number = forms.CharField(max_length=50)

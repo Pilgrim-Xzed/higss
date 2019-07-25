@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from .models import Application
-from .forms import ApplicationForm
+from .forms import ApplicationForm, CheckForm
 from django.http import HttpResponse
 
 class SignUp(generic.CreateView):
@@ -14,15 +14,13 @@ class SignUp(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
-@login_required
 def apply(request):
-    applications = Application.objects.filter(user=request.user)
+    applications = Application.objects.all()
     if request.method == "POST":
         form = ApplicationForm(request.POST)
         if form.is_valid():
             model_instance = form.save(commit=False)
             model_instance.timestamp = timezone.now()
-            model_instance.user = request.user
             model_instance.save()
             url = '/status/{}/'.format(model_instance.id)
             return redirect(url, {'result_data':model_instance })
@@ -39,7 +37,6 @@ def status(request, pk):
         if form.is_valid():
             model_instance = form.save(commit=False)
             model_instance.timestamp = timezone.now()
-            model_instance.user = request.user
             model_instance.save()
             return HttpResponse("Yessss!!")
  
@@ -49,7 +46,7 @@ def status(request, pk):
     return render(request, 'status.html', {'form': form, 'pk': pk})
 
 def pay(request, email, pk):
-    redirect_url = '/confirm/{}/'.format(pk)
+    redirect_url = '/confirm/'
     return render(request, 'pay.html', {'email': email, 'redirect_url': redirect_url})
 
 
@@ -58,7 +55,17 @@ def pay_fee(request, pk, email, fee):
     redirect_url = '/confirm/{}/'.format(pk)
     return render(request, 'pay_fees.html', {'email': email, 'redirect_url': redirect_url, 'amount': amount})
 
-def confirm(request, pk):
-    pk = int(pk)
-    application = Application.objects.get(id=pk)
-    return render(request, 'confirm.html', {'pk': pk, 'application': application})
+def confirm(request):
+    application = None
+    if request.method == "POST":
+        form = CheckForm(request.POST)
+        if form.is_valid():
+            try:
+                application=Application.objects.get(admission_number=form.cleaned_data['admission_number'])
+            except Application.DoesNotExist:
+                application = None
+            print(application)
+
+    else:
+        form = CheckForm()
+    return render(request, 'confirm.html', {'form': form, 'application': application})

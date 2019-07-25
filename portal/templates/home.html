@@ -6,7 +6,6 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
 <section class="hero is-primary"  style="background:#3F51B5;">
     <div class="hero-body">
       <div class="container">
@@ -18,15 +17,6 @@
         <h2 class="subtitle" style="text-align: center;">
             Hi {{ user.username }}! Welcome to your application portal.
         </h2>
-        <br><br>
-        <a class="button is-primary is-inverted is-outlined" href="{% url 'logout' %}" style="display: block; width: 20%; margin: 0 auto; min-width: 200px;">Logout</a>
-        <hr>
-        <h2 class="subtitle" style="text-align: center;">
-          You have made the following applications: 
-      </h2>
-      {% for application in applications %}
-      <a class="button is-primary is-inverted is-outlined" href="{% url 'status' pk=application.id %}" style="display: block; width: 20%; margin: 0 auto; min-width: 200px;">Goto Application for: {{application.firstname_of_pupil}}</a> <br>
-      {% endfor %}
       </div>
     </div>
   </section>
@@ -136,10 +126,5 @@
       </form>
   
   </div>
-{% else %}
 
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-  <p> </p><a href="/signup"></a>Click here to Creat an Account</a> </p>
-{% endif %}
 {% endblock %}

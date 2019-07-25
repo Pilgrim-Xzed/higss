@@ -17,19 +17,27 @@
         </h2>
         <p style="text-align: center;">Check your email for details.</p>
         <br><br>
-        <p class="subtitle" style="text-align: center;"> Confirmation: {{application.confirm}}</p> 
         <h4 class="subtitle" style="text-align: center;"> Admission Number: {{application.admission_number}}</h4> 
         <h4 class="subtitle" style="text-align: center;"> School Fees: {{application.school_fees}}</h4> 
         <br>
-        {% if application.school_fees %}
+        {% if application.admission_number %}
         <p class="subtitle" style="text-align: center;"> 
         <a href="{% url 'pay_fee' email=application.email pk=application.id fee=application.school_fees %}" class="button is-link" class="subtitle" style="text-align: center;" >Pay School Fees</a>
         </p>
         {% else %}
         <p class="subtitle" style="text-align: center;"> 
-        <a href="#" class="button is-link" class="subtitle" style="text-align: center;" >Pay School Fees</a>
+        <p> Kindly Submit a Valid Admission Number </p>
         </p>
-        {% endif %}        
+        {% endif %}    
+        <form method="post" >
+        {% csrf_token %}
+            <div class="form-group col-md-12 mb-0">
+                {{ form.admission_number|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-12 mb-0">
+              <center><button style="width: 90%" type="submit" class="btn btn-success" >Proceed</button></center>
+              </div>
+        </form> <br> <br>
         <br>
       </div>
     </div>

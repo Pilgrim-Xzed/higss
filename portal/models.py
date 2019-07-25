@@ -23,7 +23,7 @@ RELATIONSHIP_CHOICES = (
 )
 
 class Application(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     email = models.EmailField(help_text='Enter email address')
     timestamp = models.DateTimeField()
     passport = models.ImageField(upload_to='passports/', blank=True, null=True)

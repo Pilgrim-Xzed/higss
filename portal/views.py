@@ -46,7 +46,7 @@ def status(request, pk):
     return render(request, 'status.html', {'form': form, 'pk': pk})
 
 def pay(request, email, pk):
-    redirect_url = '/confirm/'
+    redirect_url = '/fees/'
     return render(request, 'pay.html', {'email': email, 'redirect_url': redirect_url})
 
 def success(request):
@@ -66,7 +66,6 @@ def confirm(request):
                 application=Application.objects.get(admission_number=form.cleaned_data['admission_number'])
             except Application.DoesNotExist:
                 application = None
-            print(application)
 
     else:
         form = CheckForm()

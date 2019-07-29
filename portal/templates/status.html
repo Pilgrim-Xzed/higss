@@ -3,7 +3,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-
+{% block title%}Confirmation - Hassan Ibrahim Gwarzo Secondary Schools{% endblock%}
 {% block content %}
 	<section class="hero is-primary" style="background:#3F51B5;">
 		<div class="hero-body">
@@ -11,14 +11,14 @@
 			 <img src="{% static "images/logo.png" %}" alt="logo.png" style=" display:block; margin: 0 auto; width: 200px;"/>
       <br>
 				<h1 class="title" style="text-align: center;">
-					Application Fee
+					Application Confirmation
 				</h1>
 				<br>
 				<h2 class="subtitle" style="text-align: center;">
-					Confirm Details and pay application fee
+					Kindly confirm the details you entered below and proceed to pay the application fee
 				</h2>
 				<br><br>
-				<a class="button is-primary is-inverted is-outlined" href="{% url 'logout' %}" style="display: block; width: 20%; margin: 0 auto; min-width: 200px;">Logout</a>
+		
 			</div>
 		</div>
     </section>

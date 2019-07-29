@@ -2,7 +2,7 @@
 {%load static%}
 {% load crispy_forms_tags %}
 
-{% block title %}Confirm{% endblock %}
+{% block title %}Confirmation - Hassan Ibrahim Gwarzo Secondary Schools{% endblock %}
 
 {% block content %}
 <section class="hero is-primary"  style="background:#3F51B5;">
@@ -10,15 +10,15 @@
       <div class="container">
           <img src="{% static "images/logo.png" %}" alt="logo.png" style=" display:block; margin: 0 auto; width: 200px;"/>
         <h1 class="title" style="text-align: center;">
-          Application Status Checker          
+          Admission Payment Successful         
         </h1>
         <br>
         <h2 class="subtitle" style="text-align: center;">
         </h2>
-        <p style="text-align: center;">Check your email for details.</p>
+        <p style="text-align: center;">We have received your payment.</p>
         <br><br>
-        <h4 class="subtitle" style="text-align: center;"> Admission Number: {{application.admission_number}}</h4> 
-        <h4 class="subtitle" style="text-align: center;"> School Fees: {{application.school_fees}}</h4> 
+        <h4 class="subtitle" style="text-align: center;">We shall send the details of the entrance test to your email </h4> 
+        <h4 class="subtitle" style="text-align: center;">Thank you for applying to Hassan Ibrahim Gwarzo Secondary Schools(HIGSS).</h4> 
         <br>
         {% if application.admission_number %}
         <p class="subtitle" style="text-align: center;"> 
@@ -26,16 +26,16 @@
         </p>
         {% else %}
         <p class="subtitle" style="text-align: center;"> 
-        <p> Kindly Submit a Valid Admission Number </p>
+        <p>For any enquiries kindly contact us at:  </p>
         </p>
         {% endif %}    
         <form method="post" >
         {% csrf_token %}
             <div class="form-group col-md-12 mb-0">
-                {{ form.admission_number|as_crispy_field }}
+                <p>08030000000</p>
               </div>
               <div class="form-group col-md-12 mb-0">
-              <center><button style="width: 90%" type="submit" class="btn btn-success" >Proceed</button></center>
+              <center><a href="https://www.higss.sch.ng" style="width: 90%" type="submit" class="btn btn-success" >Proceed</button></center>
               </div>
         </form> <br> <br>
         <br>

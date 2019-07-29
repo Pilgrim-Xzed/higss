@@ -8,6 +8,7 @@ urlpatterns = [
     path('pay_fee/<email>/<pk>/<fee>', pay_fee, name='pay_fee'),
     path('signup/', SignUp.as_view(), name='signup'),
     path('status/<pk>/',status, name='status'),
-    path('fees/', confirm, name='confirm'),
+    path('confirm/', confirm, name='confirm'),
+    path('fees/', confirm, name='fees'),
     path('success/', success),
 ]

@@ -46,7 +46,7 @@ def status(request, pk):
     return render(request, 'status.html', {'form': form, 'pk': pk})
 
 def pay(request, email, pk):
-    redirect_url = '/fees/'
+    redirect_url = '/confirm/'
     return render(request, 'pay.html', {'email': email, 'redirect_url': redirect_url})
 
 def success(request):

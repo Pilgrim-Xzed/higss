@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{%load static%}
+{% load crispy_forms_tags %}
+
+{% block title %}School Fees Payment – Hassan Ibrahim Gwarzo Secondary Schools{% endblock %}
+
+{% block content %}
+<section class="hero is-primary"  style="background:#3F51B5;">
+    <div class="hero-body">
+      <div class="container">
+          <img src="{% static "images/logo.png" %}" alt="logo.png" style=" display:block; margin: 0 auto; width: 200px;"/>
+        <h1 class="title" style="text-align: center;">
+            HIGSS School Fees Payment          
+        </h1>
+        <br>
+        <h2 class="subtitle" style="text-align: center;">
+        </h2>
+        <p style="text-align: center;">Enter the admission number sent to your email in the field provided below to retrieve your pupil’s details.</p>
+        <br><br>
+        <br>
+        {% if application.admission_number %}
+        <h4 class="subtitle" style="text-align: center;"> Pupil Name: {{application.surname_of_pupil}} {{application.first_of_pupil}}</h4> 
+        <h4 class="subtitle" style="text-align: center;"> Admission Number: {{application.admission_number}}</h4> 
+        <h4 class="subtitle" style="text-align: center;"> School Fees: {{application.school_fees}}</h4> 
+        <br>
+        <p class="subtitle" style="text-align: center;"> 
+        <a href="{% url 'pay_fee' email=application.email pk=application.id fee=application.school_fees %}" class="btn btn-success" class="subtitle" style="text-align: center;" >Pay School Fees</a>
+        </p>
+        {% else %}
+        <form method="post" >
+            {% csrf_token %}
+                <div class="form-group col-md-12 mb-0">
+                    {{ form.admission_number|as_crispy_field }}
+                  </div>
+                  <div class="form-group col-md-12 mb-0">
+                  <button style="text-align: center;" type="submit" class="btn btn-success" >Proceed</button>
+                  </div>
+            </form> <br> <br>
+        {% endif %}    
+
+
+        <br>
+      </div>
+    </div>
+  </section>
+{% endblock %}

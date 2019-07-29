@@ -57,7 +57,7 @@ def pay_fee(request, pk, email, fee):
     redirect_url = '/success/'
     return render(request, 'pay_fees.html', {'email': email, 'redirect_url': redirect_url, 'amount': amount})
 
-def confirm(request):
+def fees(request):
     application = None
     if request.method == "POST":
         form = CheckForm(request.POST)
@@ -69,4 +69,7 @@ def confirm(request):
 
     else:
         form = CheckForm()
-    return render(request, 'confirm.html', {'form': form, 'application': application})
+    return render(request, 'school_fees.html', {'form': form, 'application': application})
+
+def confirm(request):
+    return render(request, 'confirm.html', {})

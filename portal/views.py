@@ -38,7 +38,7 @@ def status(request, pk):
             model_instance = form.save(commit=False)
             model_instance.timestamp = timezone.now()
             model_instance.save()
-            return HttpResponse("Yessss!!")
+            return render(request, 'status.html', {'form': form, 'pk': pk})
  
     else:
  

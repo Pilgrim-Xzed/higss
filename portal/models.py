@@ -31,7 +31,7 @@ class Application(models.Model):
     firstname_of_pupil = models.CharField(max_length=255, help_text='Enter First Name of pupil')
     othername_of_pupil = models.CharField(max_length=255, help_text='Enter Middle Name of pupil', null=True, blank=True)
     sex = models.CharField(choices=GENDER_CHOICES, max_length=128)
-    date_of_birth = models.DateField(null=True, blank=True)
+    date_of_birth = models.DateField()
     class_applying_to = models.CharField(choices=CLASS_CHOICES, max_length=128)
     full_name_of_guardian = models.CharField(max_length=50)
     relationship_with_pupil = models.CharField(choices=RELATIONSHIP_CHOICES, max_length=128)

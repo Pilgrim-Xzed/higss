@@ -12,7 +12,7 @@ class ApplicationForm(ModelForm):
             'passport':FileInput(attrs={'class':'file-input'})
         }
         labels = {
-            'passport':_("Pupil's Picture"),
+            'passport':_("Pupil's Picture &nbsp;&nbsp;&nbsp;"),
             'firstname_of_pupil':_("First Name of Pupil"),
             'surname_of_pupil':_("Surname of Pupil"),
             'othername_of_pupil':_("Middle Name of Pupil"),

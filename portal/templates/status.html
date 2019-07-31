@@ -15,7 +15,7 @@
 				</h1>
 				<br>
 				<h2 class="subtitle" style="text-align: center;">
-					Kindly confirm the details you entered below and proceed to pay the application fee
+					Kindly confirm the details you entered are correct and proceed to pay the application fee.
 				</h2>
 				<br><br>
 		
@@ -112,9 +112,9 @@
                   
                                 <div class="field is-grouped" style="margin: 0 auto; width: 100%;">
                                         <div class="control"  style="margin: 0 auto; width: 100%;">
-                                            <span style="display: inline-block; width: 45%; min-width: 200px; margin-top: 20px;"><button type="submit" class="button is-warning" style="width: 100%;">Update</button> </span>
+                                          
                             
-                                            <a href="{% url 'pay' email=form.email.value pk=pk %}" style="display: inline-block; width: 45%; min-width: 200px; margin-top: 20px;" class="button is-link" style="width: 100%;" >Pay Fee : &#x20A6; 1000</a>
+                                            <center><a href="{% url 'pay' email=form.email.value pk=pk %}" style="display: inline-block; width: 45%; min-width: 200px; margin-top: 20px;" class="button is-link" style="width: 100%;" >Pay Fee : &#x20A6; 1000</a></center>
                                         </div>
                                     </div>
                                     <br><br>
